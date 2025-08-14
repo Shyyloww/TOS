@@ -12,8 +12,20 @@
     --body-font: 'Poppins', sans-serif;
 }
 * { margin: 0; padding: 0; box-sizing: border-box; }
-html { scroll-behavior: smooth; }
-body { font-family: var(--body-font); background-color: var(--bg-color); color: var(--text-color); line-height: 1.6; }
+html { scroll-behavior: smooth; height: 100%; }
+body { 
+    font-family: var(--body-font); 
+    background-color: var(--bg-color); 
+    color: var(--text-color); 
+    line-height: 1.6; 
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+main {
+    flex-grow: 1; /* This makes the main content area take up available space */
+}
 
 /* --- Animated Background & Overlay --- */
 .video-background { position: fixed; top: 0; left: 0; width: 100%; height: 100%; z-index: -2; overflow: hidden; }
@@ -53,13 +65,60 @@ body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; heigh
 }
 .nav-links a:hover { color: var(--accent-color); }
 
+/* --- General Content Page & Wrapper --- */
+.content-wrapper { 
+    background: var(--glass-bg); 
+    backdrop-filter: blur(8px); 
+    border: 1px solid var(--border-color); 
+    padding: 3rem; 
+    border-radius: 20px; 
+    margin-top: 120px;
+}
+.content-wrapper h1 { font-size: 3rem; text-align: center; margin-bottom: 0.5rem; color: var(--heading-color); }
+.section-subtitle { text-align: center; max-width: 700px; margin: 0 auto 2.5rem auto; opacity: 0.8; line-height: 1.8; }
 
-/* --- General Content Page (Changelog, FAQ) --- */
-.content-page main.container { margin-top: 120px; margin-bottom: 5rem; }
-.content-wrapper { background: var(--glass-bg); backdrop-filter: blur(8px); border: 1px solid var(--border-color); padding: 3rem; border-radius: 20px; }
-.content-wrapper h1 { font-size: 3rem; text-align: center; margin-bottom: 0.5rem; }
-.section-subtitle { text-align: center; max-width: 700px; margin: 0 auto 3.5rem auto; opacity: 0.8; line-height: 1.8; }
-
+/* --- Button Styles (for index.html) --- */
+.cta-buttons { 
+    display: flex; 
+    justify-content: center; 
+    gap: 1.5rem; 
+    align-items: center; 
+    margin-top: 2rem;
+}
+.button { 
+    display: inline-flex; 
+    align-items: center; 
+    justify-content: center;
+    gap: 0.75rem; 
+    padding: 14px 32px; 
+    border-radius: 8px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    font-size: 1.1rem;
+    font-family: var(--heading-font); 
+    transition: all 0.3s ease; 
+    border: 1px solid transparent;
+}
+.button.primary { 
+    background-color: var(--accent-color); 
+    color: #fff; 
+    border-color: var(--accent-color);
+}
+.button.primary:hover { 
+    background-color: #8e44ad;
+    border-color: #8e44ad;
+    transform: translateY(-3px); 
+}
+.button.secondary { 
+    background-color: var(--secondary-color); 
+    color: var(--text-color); 
+    border-color: var(--border-color); 
+}
+.button.secondary:hover { 
+    background-color: #3c3a52; 
+    border-color: #7a739d; 
+    transform: translateY(-3px); 
+}
 
 /* --- FAQ Page --- */
 .faq-container { margin-top: 2rem; }
@@ -75,8 +134,13 @@ body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; heigh
 .faq-panel a:hover { text-decoration: underline; }
 
 /* --- TOS Page --- */
-.tos-page main.container { margin-top: 120px; margin-bottom: 5rem; }
-.tos-container { display: flex; gap: 3rem; align-items: flex-start; }
+.tos-container { 
+    display: flex; 
+    gap: 3rem; 
+    align-items: flex-start;
+    margin-top: 120px; 
+    margin-bottom: 5rem;
+}
 .tos-sidebar { width: 280px; flex-shrink: 0; position: sticky; top: 120px; }
 .tos-sidebar h3 { font-size: 1.5rem; color: var(--heading-color); margin-bottom: 1.5rem; border-bottom: 2px solid var(--border-color); padding-bottom: 0.5rem; }
 .tos-sidebar ul { list-style: none; }
@@ -88,12 +152,22 @@ body::before { content: ''; position: fixed; top: 0; left: 0; width: 100%; heigh
 .tos-content p { margin-bottom: 1.25rem; line-height: 1.8; }
 .tos-content ul { list-style-position: inside; padding-left: 1rem; margin-bottom: 1.25rem; }
 .tos-content li { margin-bottom: 0.75rem; }
-.tos-content a { color: var(--text-color); text-decoration: none; font-weight: normal; }
+.tos-content a { color: var(--accent-color); font-weight: 600; text-decoration: none; }
 .tos-content a:hover { text-decoration: underline; }
 .last-updated { font-style: italic; opacity: 0.7; margin-bottom: 2rem; }
 .tos-summary { background-color: var(--primary-color); border: 1px solid var(--border-color); padding: 1.5rem; border-radius: 12px; margin-bottom: 2rem; }
 
 /* --- Footer --- */
-footer { text-align: center; padding: 3rem 0; background-color: #0e0e1a; font-size: 0.9rem; }
-footer a { color: var(--text-color); text-decoration: none; }
+footer { 
+    text-align: center; 
+    padding: 2rem 0; 
+    background-color: #0e0e1a; 
+    font-size: 0.9rem;
+    border-top: 1px solid var(--border-color);
+}
+footer a { 
+    color: var(--accent-color); 
+    text-decoration: none; 
+    font-weight: 600;
+}
 footer a:hover { text-decoration: underline; }
